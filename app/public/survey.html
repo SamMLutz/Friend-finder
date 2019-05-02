@@ -211,7 +211,7 @@
                 </div>
             </form>
         </div>
-        <button class="btn btn-primary" type="submit">Submit your answers</button>
+        <button class="btn btn-primary submit" type="submit">Submit your answers</button>
     </div>
 
     </main>
@@ -228,5 +228,22 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+
+<script type="text/javascript">
+
+$(".submit").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newFriend = {
+      name: $("#name").val().trim(),
+      picture: $("#profilePic").val().trim(),
+      Scores: $("#reserve-email").val().trim(),
+      
+    };
+
+    console.log(newReservation);
+
+</script>
 
 </html>
