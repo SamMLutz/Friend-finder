@@ -11,20 +11,52 @@ var friendsList = [
             2,
             5,
             4,
-            1
+            1,
+            2,
+            5
+        ]
+    },
+    {
+        name: "Jeaux Bleaux",
+        photo: "http://townsquare.media/site/832/files/2017/06/Sam-Alex-headshot.jpg",
+        scores: [
+            3,
+            4,
+            1,
+            1,
+            3,
+            4,
+            2,
+            3,
+            4,
+            2,
+            5
         ]
     }
 ]
 
 module.exports = friendsList;
-var total = 0;
 
-for (var i = 0; i < friendsList[0].scores.length; i++) {
-    
-    total = total + parseInt(friendsList[0].scores[i])
-    // console.log(friendsList[0].scores[i])
-    // console.log(total);
+var firstFriendTotal = 29;
+
+function getTotalValue(friend) {
+    var total = 0;
+
+    for (var i = 0; i < friend.scores.length; i++) {
+        total = total + parseInt(friend.scores[i])
+    }
+
+    return total;
 }
-console.log(total);
-// console.log(friendsList[0].scores)
 
+var totals = []
+
+for (var i = 0; i < friendsList.length; i++) {
+    var currentFriend = friendsList[i];
+    
+    var currentFriendsValue = getTotalValue(currentFriend);
+
+    totals.push(currentFriendsValue);
+}
+
+console.log(totals);
