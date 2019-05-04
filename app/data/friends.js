@@ -17,3 +17,9 @@ var friendsList = [
 ]
 
 module.exports = friendsList;
+
+// for (var i =0; friendsList.scores.length; i++) {
+//     friendsList.scores[i]
+// }
+
+console.log(friendsList.name)
