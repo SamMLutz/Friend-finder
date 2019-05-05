@@ -37,7 +37,7 @@ var friendsList = [
 
 module.exports = friendsList;
 
-var firstFriendTotal = 29;
+var newFriendTotal = 29;
 
 function getTotalValue(friend) {
     var total = 0;
@@ -50,6 +50,9 @@ function getTotalValue(friend) {
 }
 
 var totals = []
+var closestFriend;
+var otherFriends = []
+var scoreDifference = []
 
 for (var i = 0; i < friendsList.length; i++) {
     var currentFriend = friendsList[i];
@@ -60,3 +63,19 @@ for (var i = 0; i < friendsList.length; i++) {
 }
 
 console.log(totals);
+
+// loop thru totals and check NewFriendTotal against scores
+
+for (var i = 0; i <totals.length; i++) {
+    var currentScore = totals[i]
+    var difference = Math.abs(newFriendTotal - currentScore)
+    // console.log(difference)
+    scoreDifference.push(difference)
+}
+console.log(scoreDifference)
+// scoreDifference.sort()
+scoreDifference.sort(function(a, b){return b - a});
+// console.log(difference)
+
+var min = Math.min.apply(Math, scoreDifference)
+console.log(min)
