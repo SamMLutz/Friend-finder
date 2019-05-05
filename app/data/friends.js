@@ -32,6 +32,23 @@ var friendsList = [
             2,
             5
         ]
+    },
+    {
+        name: "Freddy Krueger",
+        photo: "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Freddy_Krueger_%28Robert_Englund%29.jpg/220px-Freddy_Krueger_%28Robert_Englund%29.jpg",
+        scores: [
+            5,
+            3,
+            2,
+            3,
+            1,
+            5,
+            3,
+            4,
+            1,
+            5,
+            2
+        ]
     }
 ]
 
@@ -79,3 +96,13 @@ scoreDifference.sort(function(a, b){return b - a});
 
 var min = Math.min.apply(Math, scoreDifference)
 console.log(min)
+
+for (var i =0; i < friendsList.length; i++) {
+    var currentFriend = friendsList[i];
+    var currentFriendsValue = getTotalValue(currentFriend);
+    if (Math.abs(newFriendTotal - currentFriendsValue) == min) {
+        closestFriend = currentFriend;
+        console.log(closestFriend)
+    } 
+
+}
