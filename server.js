@@ -12,10 +12,9 @@ var PORT = process.env.PORT || 5000;;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// requiring out data from external js files
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);
-
 
 // Starts the server to begin listening
 // =============================================================

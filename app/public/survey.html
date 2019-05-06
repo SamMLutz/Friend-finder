@@ -29,11 +29,10 @@
                 </div>
             </form>
         </div>
-
     </header>
 
-
     <main>
+        <!-- survery questions html -->
         <div class="container">
             <div id="questionOne">
                 <h3>Question 1</h3>
@@ -215,73 +214,52 @@
             <button class="btn btn-primary submit" type="submit" data-toggle="modal" data-target="#myModal">Submit your
                 answers</button>
         </div>
+        <!-- div for the modal pop up -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-
-                
-            <div class="modal-content">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Here's your closest friend match!</h4>
                     </div>
                     <div class="modal-body">
-                        <p>cloest friend info: </p>
+
                     </div>
                     <div class="modal-body2">
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
 </body>
 
 </html>
 
 <script type="text/javascript">
-
-    console.log("churp")
-    // var path = require("path")
-    // var friendsData = require("../data/friends")
+    // variables to store our data along the friend pairing process
     var totals = []
     var closestFriend;
     var scoreDifferences = []
 
+    // on click function for the survey submit button
     $(".submit").on("click", function (event) {
         event.preventDefault();
 
-        // function getTotalValue(friend) {
-        //     var total = 0;
-
-        //     for (var i = 0; i < friend.scores.length; i++) {
-        //         total = total + parseInt(friend.scores[i])
-        //     }
-
-        //     return total;
-        // }
         // Here we grab the form elements
         var newFriend = {
             name: $("#name").val().trim(),
@@ -299,63 +277,20 @@
             $("#Select11").val().trim()
             ]
         };
-        console.log(newFriend.scores)
+        console.log("new friend Scores: " + newFriend.scores)
 
         $.post("/api/friends", newFriend,
             function (data) {
-                // If a table is available... tell user they are booked.
                 if (data) {
-                    // alert("Yay! you have been added to the friends list!");
-                    // alert("Cloest friend match is: " + data.name)
                     console.log(data)
                     var profilePic = $("<img>").attr("src", data.photo)
                     $('#myModal .modal-body').append(data.name);
                     $('#myModal .modal-body2').append(profilePic);
-                    //   friendsList.push(newFriend);
                 }
-                // If a table is available... tell user they on the waiting list.
                 else {
                     alert("error");
                 }
             });
-
-        // getTotalValue(newFriend)
-        //     for (var i = 0; i < friendsList.length; i++) {
-        //     var currentFriend = friendsList[i];
-
-        //     var currentFriendsValue = getTotalValue(currentFriend);
-
-        //     totals.push(currentFriendsValue);
-        // }
-
-        console.log(totals);
-
-        // loop thru totals and check NewFriendTotal against scores
-
-        // for (var i = 0; i <totals.length; i++) {
-        //     var currentScore = totals[i]
-        //     var difference = Math.abs(newFriend - currentScore)
-        //     // console.log(difference)
-        //     scoreDifferences.push(difference)
-        // }
-        // console.log(scoreDifferences)
-        // // scoreDifference.sort()
-        // // scoreDifferences.sort(function(a, b){return b - a});
-        // // console.log(difference)
-
-        // var min = Math.min.apply(Math, scoreDifferences)
-        // console.log(min)
-
-        // for (var i =0; i < friendsList.length; i++) {
-        //     var currentFriend = friendsList[i];
-        //     var currentFriendsValue = getTotalValue(currentFriend);
-        //     if (Math.abs(newFriend - currentFriendsValue) == min) {
-        //         closestFriend = currentFriend;
-        //         console.log(closestFriend)
-        //     } 
-
-        // }
-
     });
 
 </script>
