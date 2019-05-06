@@ -54,7 +54,7 @@ var friendsList = [
 
 module.exports = friendsList;
 
-var newFriendTotal = 29;
+// var newFriendTotal = 29;
 
 function getTotalValue(friend) {
     var total = 0;
@@ -66,43 +66,43 @@ function getTotalValue(friend) {
     return total;
 }
 
-var totals = []
-var closestFriend;
-var otherFriends = []
-var scoreDifference = []
+// var totals = []
+// var closestFriend;
+// // var otherFriends = []
+// var scoreDifferences = []
 
-for (var i = 0; i < friendsList.length; i++) {
-    var currentFriend = friendsList[i];
+// for (var i = 0; i < friendsList.length; i++) {
+//     var currentFriend = friendsList[i];
     
-    var currentFriendsValue = getTotalValue(currentFriend);
+//     var currentFriendsValue = getTotalValue(currentFriend);
 
-    totals.push(currentFriendsValue);
-}
+//     totals.push(currentFriendsValue);
+// }
 
-console.log(totals);
+// console.log(totals);
 
-// loop thru totals and check NewFriendTotal against scores
+// // loop thru totals and check NewFriendTotal against scores
 
-for (var i = 0; i <totals.length; i++) {
-    var currentScore = totals[i]
-    var difference = Math.abs(newFriendTotal - currentScore)
-    // console.log(difference)
-    scoreDifference.push(difference)
-}
-console.log(scoreDifference)
-// scoreDifference.sort()
-scoreDifference.sort(function(a, b){return b - a});
-// console.log(difference)
+// for (var i = 0; i <totals.length; i++) {
+//     var currentScore = totals[i]
+//     var difference = Math.abs(newFriendTotal - currentScore)
+//     // console.log(difference)
+//     scoreDifferences.push(difference)
+// }
+// console.log(scoreDifferences)
+// // scoreDifference.sort()
+// // scoreDifferences.sort(function(a, b){return b - a});
+// // console.log(difference)
 
-var min = Math.min.apply(Math, scoreDifference)
-console.log(min)
+// var min = Math.min.apply(Math, scoreDifferences)
+// console.log(min)
 
-for (var i =0; i < friendsList.length; i++) {
-    var currentFriend = friendsList[i];
-    var currentFriendsValue = getTotalValue(currentFriend);
-    if (Math.abs(newFriendTotal - currentFriendsValue) == min) {
-        closestFriend = currentFriend;
-        console.log(closestFriend)
-    } 
+// for (var i =0; i < friendsList.length; i++) {
+//     var currentFriend = friendsList[i];
+//     var currentFriendsValue = getTotalValue(currentFriend);
+//     if (Math.abs(newFriendTotal - currentFriendsValue) == min) {
+//         closestFriend = currentFriend;
+//         console.log(closestFriend)
+//     } 
 
-}
+// }

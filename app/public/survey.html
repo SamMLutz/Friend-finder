@@ -233,20 +233,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+        
 </body>
 
 </html>
 
 <script type="text/javascript">
 
+console.log("churp")
+// var path = require("path")
+// var friendsData = require("../data/friends")
+var totals = []
+var closestFriend;
+var scoreDifferences = []
+
 $(".submit").on("click", function(event) {
     event.preventDefault();
 
+    // function getTotalValue(friend) {
+    //     var total = 0;
+
+    //     for (var i = 0; i < friend.scores.length; i++) {
+    //         total = total + parseInt(friend.scores[i])
+    //     }
+
+    //     return total;
+    // }
     // Here we grab the form elements
     var newFriend = {
       name: $("#name").val().trim(),
       picture: $("#profilePic").val().trim(),
-      Scores: [$("#Select1").val().trim(),
+      scores: [$("#Select1").val().trim(),
                $("#Select2").val().trim(),
                $("#Select3").val().trim(),
                $("#Select4").val().trim(),
@@ -259,26 +276,58 @@ $(".submit").on("click", function(event) {
                $("#Select11").val().trim()
         ]
     };
-
-    console.log(newFriend);
-
+    console.log(newFriend.scores)
+   
     $.post("/api/friends", newFriend,
       function(data) {
-
         // If a table is available... tell user they are booked.
         if (data) {
           alert("Yay! you have been added to the friends list!");
         //   friendsList.push(newFriend);
-        
-        }
-
+    }
         // If a table is available... tell user they on the waiting list.
-        else {
+    else {
           alert("error");
         }
+    });
 
+    // getTotalValue(newFriend)
+//     for (var i = 0; i < friendsList.length; i++) {
+//     var currentFriend = friendsList[i];
+    
+//     var currentFriendsValue = getTotalValue(currentFriend);
 
-      });
+//     totals.push(currentFriendsValue);
+// }
+
+console.log(totals);
+
+// loop thru totals and check NewFriendTotal against scores
+
+// for (var i = 0; i <totals.length; i++) {
+//     var currentScore = totals[i]
+//     var difference = Math.abs(newFriend - currentScore)
+//     // console.log(difference)
+//     scoreDifferences.push(difference)
+// }
+// console.log(scoreDifferences)
+// // scoreDifference.sort()
+// // scoreDifferences.sort(function(a, b){return b - a});
+// // console.log(difference)
+
+// var min = Math.min.apply(Math, scoreDifferences)
+// console.log(min)
+
+// for (var i =0; i < friendsList.length; i++) {
+//     var currentFriend = friendsList[i];
+//     var currentFriendsValue = getTotalValue(currentFriend);
+//     if (Math.abs(newFriend - currentFriendsValue) == min) {
+//         closestFriend = currentFriend;
+//         console.log(closestFriend)
+//     } 
+
+// }
+      
 });
 
 </script>
